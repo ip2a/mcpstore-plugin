@@ -1,0 +1,92 @@
+name: Validate Plugin Manifests
+
+on:
+  pull_request:
+    paths:
+      - 'clients/**'
+      - 'plugin.schema.json'
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install jsonschema
+
+      - name: Validate all manifests
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          import tomllib
+          from pathlib import Path
+          from jsonschema import validate, ValidationError
+
+          schema_path = Path("plugin.schema.json")
+          if not schema_path.exists():
+              print("❌ plugin.schema.json not found")
+              sys.exit(1)
+
+          with open(schema_path) as f:
+              schema = json.load(f)
+
+          clients_dir = Path("clients")
+          if not clients_dir.exists():
+              print("❌ clients/ directory not found")
+              sys.exit(1)
+
+          plugins = list(clients_dir.glob("*/plugin.toml"))
+          if not plugins:
+              print("⚠️  No plugin.toml files found")
+              sys.exit(0)
+
+          errors = []
+          seen_ids = {}
+
+          for manifest_path in sorted(plugins):
+              client_name = manifest_path.parent.name
+              print(f"\n📦 Validating {client_name}/plugin.toml...")
+
+              try:
+                  with open(manifest_path, "rb") as f:
+                      data = tomllib.load(f)
+              except Exception as e:
+                  errors.append(f"{client_name}: TOML parse error: {e}")
+                  continue
+
+              # Check folder name matches id
+              plugin_id = data.get("plugin", {}).get("id")
+              if plugin_id != client_name:
+                  errors.append(f"{client_name}: folder name must match plugin.id (got '{plugin_id}')")
+
+              # Check for duplicate IDs
+              if plugin_id in seen_ids:
+                  errors.append(f"{client_name}: duplicate plugin.id '{plugin_id}' (already used by {seen_ids[plugin_id]})")
+              else:
+                  seen_ids[plugin_id] = client_name
+
+              # Validate against schema
+              try:
+                  validate(instance=data, schema=schema)
+                  print(f"  ✅ Valid manifest for '{plugin_id}'")
+              except ValidationError as e:
+                  errors.append(f"{client_name}: Schema validation failed: {e.message}")
+
+          if errors:
+              print("\n❌ Validation failed:\n")
+              for error in errors:
+                  print(f"  • {error}")
+              sys.exit(1)
+          else:
+              print(f"\n✅ All {len(plugins)} plugins validated successfully")
+          EOF
