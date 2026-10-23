@@ -88,7 +88,7 @@ See built-in plugins for reference:
 - **TOML format**: `codex/`
 - **Array command syntax**: `opencode/`
 - **Extended fields**: `pi/`, `omp/`
-- **Type validation**: `opencode/` (see `validate_type_field`)
+- **Type validation**: `opencode/` (see `type_map`), `pi/`, `omp/`
 
 ## Questions?
 
