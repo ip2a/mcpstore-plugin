@@ -1,6 +1,6 @@
 {
   "spec_version": 1,
-  "generated_at": "2026-10-27T10:27:04+00:00",
+  "generated_at": "2026-10-27T10:27:33+00:00",
   "plugins": [
     {
       "id": "claude",
@@ -9,7 +9,7 @@
       "spec_version": 1,
       "description": null,
       "download": "dist/claude.zip",
-      "digest": "dd1dba79f2db493c12eee5e4b2f78e1bf9384d17c0f8853cf5ecfe3c62e53284",
+      "digest": "e195f0af511d7e7e9c1d8d104161d154b40be31ae07a9fb522cf2d9174b56982",
       "discover": {
         "config_paths": [
           "~/.claude.json"
@@ -29,7 +29,7 @@
       "spec_version": 1,
       "description": null,
       "download": "dist/codex.zip",
-      "digest": "c994aa5a50edfe55ff7cebffd7094379399d0bfb0dcf79324131968c69aea65d",
+      "digest": "a3027e16515fb74b0a886406839ebb8584265961dcfe481dcc002ffe7e884825",
       "discover": {
         "config_paths": [
           "~/.codex/config.toml"
@@ -49,7 +49,7 @@
       "spec_version": 1,
       "description": null,
       "download": "dist/cursor.zip",
-      "digest": "d3eb6d47c1b93a78ec21a923cd5da8023886210ba2531254fd76455781139253",
+      "digest": "139fc673e40ad1bcc734a85e3b0e116effcef60a92f5c4cfba8ff4be5a50983c",
       "discover": {
         "config_paths": [
           "~/.cursor/mcp.json"
@@ -69,7 +69,7 @@
       "spec_version": 1,
       "description": "Oh My Pi coding agent (@oh-my-pi/pi-coding-agent)",
       "download": "dist/omp.zip",
-      "digest": "ef020c31f417846b3758eeeaa829a34f60ceb4c24a0243d70994d6b5bc4877e3",
+      "digest": "d98d95a47f97a8abb68e5f5d147aa1cb5d5ef1586752a78b3735c2fa6ed28285",
       "discover": {
         "config_paths": [
           "~/.omp/agent/mcp.json"
@@ -90,7 +90,7 @@
       "spec_version": 1,
       "description": null,
       "download": "dist/opencode.zip",
-      "digest": "02accd1f6bbd36a7cb0385adb0a31822e956793d41ba5e6de1ec38f9441b35f2",
+      "digest": "350c3e33a5cdbd78cf934a9e52a5175519c3271a9a63ca0274c30c95923978c6",
       "discover": {
         "config_paths": [
           "~/.config/opencode/opencode.json",
@@ -111,7 +111,7 @@
       "spec_version": 1,
       "description": "Pi coding agent with native MCP support (0.99+)",
       "download": "dist/pi.zip",
-      "digest": "f253f3dd5cd96abd903395f31eae8db337a6668b3760d346d4421e743718d88a",
+      "digest": "af03a711a86223d5692c1d3d864b638ebc05a53613d2bdbfb66e7fc40026799e",
       "discover": {
         "config_paths": [
           "~/.pi/agent/mcp.json"
