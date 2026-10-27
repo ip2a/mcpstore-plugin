@@ -5,6 +5,7 @@ on:
     paths:
       - 'clients/**'
       - 'plugin.schema.json'
+      - 'scripts/**'
   push:
     branches: [main]
 
@@ -90,3 +91,38 @@ jobs:
           else:
               print(f"\n✅ All {len(plugins)} plugins validated successfully")
           EOF
+
+  # Regenerate the market index and per-plugin zips on main. These are the
+  # only artifacts daemons fetch (one index.json + dist/<id>.zip per plugin,
+  # served raw by GitHub and the Gitee mirror alike).
+  dist:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install blake3
+
+      - name: Generate index.json and dist/
+        run: python3 scripts/generate-index.py
+
+      - name: Commit regenerated artifacts
+        run: |
+          git config user.name "mcpstore-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add index.json dist/
+          if git diff --cached --quiet; then
+            echo "No index changes"
+            exit 0
+          fi
+          git commit -m "chore: regenerate market index [skip ci]"
+          git push

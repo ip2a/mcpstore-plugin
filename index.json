@@ -1,0 +1,129 @@
+{
+  "spec_version": 1,
+  "generated_at": "2026-10-27T10:19:11+00:00",
+  "plugins": [
+    {
+      "id": "claude",
+      "label": "Claude Code",
+      "plugin_version": "1.0.0",
+      "spec_version": 1,
+      "description": null,
+      "download": "dist/claude.zip",
+      "digest": "dd1dba79f2db493c12eee5e4b2f78e1bf9384d17c0f8853cf5ecfe3c62e53284",
+      "discover": {
+        "config_paths": [
+          "~/.claude.json"
+        ],
+        "config_dirs": [
+          "~/.claude"
+        ],
+        "cli_commands": [
+          "claude"
+        ]
+      }
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "plugin_version": "1.0.0",
+      "spec_version": 1,
+      "description": null,
+      "download": "dist/codex.zip",
+      "digest": "c994aa5a50edfe55ff7cebffd7094379399d0bfb0dcf79324131968c69aea65d",
+      "discover": {
+        "config_paths": [
+          "~/.codex/config.toml"
+        ],
+        "config_dirs": [
+          "~/.codex"
+        ],
+        "cli_commands": [
+          "codex"
+        ]
+      }
+    },
+    {
+      "id": "cursor",
+      "label": "Cursor",
+      "plugin_version": "1.0.0",
+      "spec_version": 1,
+      "description": null,
+      "download": "dist/cursor.zip",
+      "digest": "d3eb6d47c1b93a78ec21a923cd5da8023886210ba2531254fd76455781139253",
+      "discover": {
+        "config_paths": [
+          "~/.cursor/mcp.json"
+        ],
+        "config_dirs": [
+          "~/.cursor"
+        ],
+        "cli_commands": [
+          "cursor"
+        ]
+      }
+    },
+    {
+      "id": "omp",
+      "label": "Oh My Pi",
+      "plugin_version": "1.0.0",
+      "spec_version": 1,
+      "description": "Oh My Pi coding agent (@oh-my-pi/pi-coding-agent)",
+      "download": "dist/omp.zip",
+      "digest": "af7ee3beb4a556ac0b1aff90fa5a017dac6b0347e65882b2bd25b0efa4eb8b72",
+      "discover": {
+        "config_paths": [
+          "~/.omp/agent/mcp.json"
+        ],
+        "config_dirs": [
+          "~/.omp/agent",
+          "~/.omp"
+        ],
+        "cli_commands": [
+          "omp"
+        ]
+      }
+    },
+    {
+      "id": "opencode",
+      "label": "OpenCode",
+      "plugin_version": "1.0.0",
+      "spec_version": 1,
+      "description": null,
+      "download": "dist/opencode.zip",
+      "digest": "02accd1f6bbd36a7cb0385adb0a31822e956793d41ba5e6de1ec38f9441b35f2",
+      "discover": {
+        "config_paths": [
+          "~/.config/opencode/opencode.json",
+          "~/.opencode.json"
+        ],
+        "config_dirs": [
+          "~/.config/opencode"
+        ],
+        "cli_commands": [
+          "opencode"
+        ]
+      }
+    },
+    {
+      "id": "pi",
+      "label": "Pi",
+      "plugin_version": "1.0.0",
+      "spec_version": 1,
+      "description": "Pi coding agent with native MCP support (0.99+)",
+      "download": "dist/pi.zip",
+      "digest": "f253f3dd5cd96abd903395f31eae8db337a6668b3760d346d4421e743718d88a",
+      "discover": {
+        "config_paths": [
+          "~/.pi/agent/mcp.json"
+        ],
+        "config_dirs": [
+          "~/.pi/agent",
+          "~/.pi"
+        ],
+        "cli_commands": [
+          "pi"
+        ]
+      }
+    }
+  ]
+}
